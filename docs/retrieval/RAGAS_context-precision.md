@@ -1,21 +1,15 @@
-# RAGAS: Context Relevance
+# RAGAS: Context Precision (Retrieved Context <-> Ground Truth Answer)
+Reference: https://docs.ragas.io/en/stable/concepts/metrics/context_precision.html
 
-Reference: https://docs.ragas.io/en/stable/concepts/metrics/context_relevancy.html
-
-$$
-\text{Context Relevancy} =
-\frac{|S|}{\text{Total number of sentences in the retrieved context}}
-$$
-
-where $|S|$ is the number of sentences extracted from the context that are relevant to the question.
+Assesses if relevant items from ground truth are ranked higher in the retrieved contexts. Ideal scenario: All relevant chunks appear at top ranks.
 
 ## Comments
 
-- Extract sentences from the original context before LLM evaluation should be a more reliable approach. This method ensures:
-    - Preservation of the original text.
-    - Prevention of unintended alterations by the LLM, even if instructed not to change sentences.
+Extract sentences from the original context before LLM evaluation should be a more reliable approach. This method ensures:
+- Preservation of the original text.
+- Prevention of unintended alterations by the LLM, even if instructed not to change sentences.
 
-- It's better to shift from sentence-level to chunk-level evaluation. Sentence-level judgement heavily relies on chunking strategies, large chunks containing a single-sentence answer may receive unfairly low scores. 
+It's better to shift from sentence-level to chunk-level evaluation. Sentence-level judgement heavily relies on chunking strategies, large chunks containing a single-sentence answer may receive unfairly low scores. 
 
 ## Code and Prompts
 

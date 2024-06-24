@@ -1,7 +1,7 @@
 # TruLens: Answer Relevance
 The response needs to helpfully answer the original question. We can verify this by evaluating the relevance of the final response to the user input.
 
-The approach uses LLM-as-a-judge to evaluate the relevance of the answer to the query by:
+We use LLM-as-a-judge to evaluate the relevance of the answer to the query by:
 - Assigning a score 0-10 based on the given relevance criteria.
 - Providing the criteria for the evaluation.
 - Providing the reasons for scoring based on the listed criteria step by step.

@@ -1,20 +1,15 @@
 # TruLens: Context Relevance
-To verify the quality of our retrieval, we want to make sure that each chunk of context is relevant to the input query. This is critical because this context will be used by the LLM to form an answer, so any irrelevant information in the context could be weaved into a hallucination. The groundtruth context is not necessary for this process.
+To verify the quality of our retrieval, we want to make sure that each chunk of context is relevant to the input query. This is critical because this context will be used by the LLM to form an answer, so any irrelevant information in the context could be weaved into a hallucination.
 
-The approach uses LLM-as-a-judge to evaluate the relevance of the context to the query by:
+We use LLM-as-a-judge to evaluate the relevance of the context to the query by:
 - Assigning a score 0-10 based on the given relevance criteria.
 - Providing the criteria for the evaluation.
 - Providing the reasons for scoring based on the listed criteria step by step.
 
 ## Comments
-- A 0-10 scale might be overly precise for this type of evaluation. A more coarse-grained scale could be more appropriate and potentially more reliable. Some alternatives could be:
-  - A simpler 3-point scale (Low, Medium, High)
-  - A binary scale (Relevant / Not Relevant)
-
-- The instruction is unclear to me as a human being. It might be problematic for an LLM as well. Clear, specific instructions are crucial for accurate evaluations. To improve this, consider:
-  - Breaking down the evaluation criteria into specific, measurable components
-  - Providing examples of what constitutes high, medium, and low relevance
-  - Clearly defining what "crucial to answering the question" means in this context
+The complexity of the instruction may make it challenging for the LLM to follow accurately on a 0-10 scale. This level of precision might be unnecessary. A simpler grading system could be more suitable and potentially yield more consistent results. We could consider these alternatives:
+- A basic 3-tier scale: Low, Medium, High
+- A binary assessment: Relevant or Not Relevant
 
 ## Code and Prompts
 

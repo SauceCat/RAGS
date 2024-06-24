@@ -1,17 +1,23 @@
 # TruLens: Groundedness
-After context retrieval, an LLM formulates an answer. However, LLMs can sometimes deviate from provided facts, potentially exaggerating or expanding into plausible-sounding but inaccurate responses.
+LLMs can generate answers that may stray from provided context, potentially leading to plausible but inaccurate information. To assess the accuracy of these responses, we can:
 
-To verify the groundedness of the application, the response can be decomposed into individual claims, each independently assessed for supporting evidence within the retrieved context.
+1. Break down the answer into individual claims.
+2. Evaluate each claim against the retrieved context.
 
-The approach employs an LLM-as-a-judge methodology to evaluate response groundedness:
-- Utilize the Punkt Sentence Tokenizer to divide the response into individual sentences, referred to as statements.
-- For each statement, the LLM is prompted to:
-   - Assign a score from 0 to 10, indicating the level of information overlap between the source and the statement.
-   - Use the statement itself as the evaluation criterion.
-   - Provide a step-by-step rationale for the assigned score, identifying and describing supporting evidence from the source.
+We use LLM-as-a-judge to assess response groundedness by:
+1. Split the response into sentences using the Punkt Sentence Tokenizer.
+2. For each sentence, prompt the LLM to:
+   - Rate the overlap between the source and the sentence on a 0-10 scale.
+   - Explain the rating, citing specific supporting evidence from the source.
 
 ## Comments
-Same as the comments [here](../../retrieval/relevance/TruLens_context-relevance.md#Comments)
+Similar to the comments [here](../../retrieval/relevance/TruLens_context-relevance.md#comments)
+
+Also, evaluating information overlap is unnecessarily complex. Instead, we should focus on whether each claim in the response is supported by the context. It's important to note that not every sentence contains a claim requiring verification. Our process should:
+
+1. Identify and extract the actual claims from the response.
+2. Evaluate the groundedness of these specific claims against the provided context.
+
 
 ## Code and Prompts
 
