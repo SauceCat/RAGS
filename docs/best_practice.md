@@ -47,10 +47,17 @@ RAGAS: faithfulness (no need gt)
 1. Break the generated answer into individual statements.
 2. For each of the generated statements, verify if it can be inferred from the given context.
 
+### Generated Answer <-> Question
+RAGAS: Answer Relevance
+Assess the relevance of the generated answer to the original question.
 
+### Generated Answer <-> Answer
+RAGAS: Answer semantic similarity
 
+The concept of Answer Semantic Similarity pertains to the assessment of the semantic resemblance between the generated answer and the ground truth. 
 
-### Answer <-> Question
+## Additional Requirement
+RAGAS: Aspect Critique (Generated Answer)
 
 
 # Extra Knowledge

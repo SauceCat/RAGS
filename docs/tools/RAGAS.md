@@ -14,7 +14,6 @@ The authors created WikiEval, a small dataset of 50 test cases, to compare RAGAS
 1. GPT Score: ChatGPT rates quality dimensions from 0-10 based on metric definitions.
 2. GPT Ranking: ChatGPT selects preferred answers/contexts based on quality metrics.
 
-
 <img src="../images/tools/RAGAS_alignment.png" width=400>
 
 Table 1: Agreement with human annotators in pairwise comparisons of faithfulness, answer relevance and context relevance, using the WikEval dataset (accuracy).
@@ -24,3 +23,15 @@ Table 1: Agreement with human annotators in pairwise comparisons of faithfulness
 - Context Relevance: Most challenging to evaluate, with ChatGPT struggling to identify crucial information in longer contexts.
 
 This analysis suggests RAGAS offers a promising approach for efficient, automated RAG system evaluation.
+
+Overall, RAGAS offers two categories of metrics:
+
+1. Metrics without ground truth requirements: [These are the metrics previously discussed]
+2. Metrics requiring ground truth answers:
+    - Context Precision
+    - Context Recall
+    - Context Entities Recall
+    - Answer Semantic Similarity
+    - Answer Correctness
+
+These ground truth-based metrics provide additional evaluation dimensions but require human-annotated data. They offer a more comprehensive assessment of RAG system performance, particularly in scenarios where high accuracy is crucial and resources are available for creating annotated datasets.
