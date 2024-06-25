@@ -6,16 +6,34 @@ LLM binary relevance judgement. (TruLens)
 Check whether each context chunk is required to answer the question. (RAGAS)
 
 ### Retrieved Context <-> Ground Truth Answer
+RAGAS: Context Precision
+
+Assesses if relevant items from ground truth are ranked higher in the retrieved contexts. Ideal scenario: All relevant chunks appear at top ranks.
+
+Level: context chunk
+
+---
+
 
 RAGAS: Context Recall
-1. Break the ground truth answer into individual statements.
-2. For each of the ground truth statements, verify if it can be attributed to the retrieved context.
-3. Context recall = number of GT sentences that can be attributed to context / total number of GT sentences
+
+Evaluates if each sentence in the ground truth answer can be traced back to the retrieved context. Ideal scenario: Every sentence in the ground truth answer is attributable to the retrieved context.
+
+Level: ground truth sentence
+
+Better first extract statements from answers and then do the judgement.
+
+---
 
 RAGAS: Context entities recall
-1. Identify entities in the ground truth answer.
-2. Check how many of these entities are present in the retrieved context.
-3. Context entities recall = number of GT entities present in context / total number of GT entities.
+
+Measures the proportion of ground truth entities present in the retrieved context. Particularly useful for fact-based applications (e.g., tourism help desks, historical Q&A).
+
+Level: entities
+
+quite interesting, worth considering.
+
+---
 
 ## Generation
 ### Generated Answer <-> Retrieved Context
@@ -33,3 +51,8 @@ RAGAS: faithfulness (no need gt)
 
 
 ### Answer <-> Question
+
+
+# Extra Knowledge
+
+RAGAS's prompt management and formatting seems quite interesting.

@@ -3,83 +3,68 @@ Reference: https://docs.ragas.io/en/stable/concepts/metrics/context_precision.ht
 
 Assesses if relevant items from ground truth are ranked higher in the retrieved contexts. Ideal scenario: All relevant chunks appear at top ranks.
 
-## Comments
+## Calculation
+class: `ContextPrecision`
 
-Extract sentences from the original context before LLM evaluation should be a more reliable approach. This method ensures:
-- Preservation of the original text.
-- Prevention of unintended alterations by the LLM, even if instructed not to change sentences.
-
-It's better to shift from sentence-level to chunk-level evaluation. Sentence-level judgement heavily relies on chunking strategies, large chunks containing a single-sentence answer may receive unfairly low scores. 
-
-## Code and Prompts
+### Step 1
+For each chunk in retrieved context, check if it is relevant to arrive at the ground truth for the given question using LLM-as-a-judge.
 
 ```python
-@dataclass
-class ContextRelevancy(MetricWithLLM):
-    """
-    Extracts sentences from the context that are relevant to the question with
-    self-consistency checks. The number of relevant sentences and is used as the score.
-
-    Attributes
-    ----------
-    name : str
-    """
-
-    name: str = "context_relevancy"  # type: ignore
-    evaluation_mode: EvaluationMode = EvaluationMode.qc  # type: ignore
-    context_relevancy_prompt: Prompt = field(default_factory=lambda: CONTEXT_RELEVANCE)
-    show_deprecation_warning: bool = False
-
-    def _compute_score(self, response: str, row: t.Dict) -> float:
-        context = "\n".join(row["contexts"])
-        context_sents = sent_tokenize(context)
-        indices = (
-            sent_tokenize(response.strip())
-            if response.lower() != "insufficient information."
-            else []
-        )
-        if len(context_sents) == 0:
-            return 0
-        else:
-            return min(len(indices) / len(context_sents), 1)
-
-    async def _ascore(self, row: t.Dict, callbacks: Callbacks, is_async: bool) -> float:
-        assert self.llm is not None, "LLM is not initialized"
-
-        if self.show_deprecation_warning:
-            logger.warning(
-                "The 'context_relevancy' metric is going to be deprecated soon! Please use the 'context_precision' metric instead. It is a drop-in replacement just a simple search and replace should work."  # noqa
+class ContextPrecision(MetricWithLLM):
+    def _context_precision_prompt(self, row: t.Dict) -> t.List[PromptValue]:
+        # get the prompt per context chunk
+        question, contexts, answer = self._get_row_attributes(row)
+        return [
+            self.context_precision_prompt.format(
+                question=question, context=c, answer=answer
             )
-
-        question, contexts = row["question"], row["contexts"]
-        result = await self.llm.generate(
-            self.context_relevancy_prompt.format(
-                question=question, context="\n".join(contexts)
-            ),
-            callbacks=callbacks,
-        )
-        return self._compute_score(result.generations[0][0].text, row)
-
-    def adapt(self, language: str, cache_dir: str | None = None) -> None:
-        assert self.llm is not None, "set LLM before use"
-
-        logger.info(f"Adapting Context Relevancy to {language}")
-        self.context_relevancy_prompt = self.context_relevancy_prompt.adapt(
-            language, self.llm, cache_dir
-        )
-
-    def save(self, cache_dir: str | None = None) -> None:
-        self.context_relevancy_prompt.save(cache_dir)
+            for c in contexts
+        ]
 ```
 
-`CONTEXT_RELEVANCE`:
+Here, we use prompt with a few examples:
+
+instruction:
+
+```
+Given question, answer and context verify if the context was useful in arriving at the given answer. Give verdict as "1" if useful and "0" if not with json output.
+```
+
+sample example:
+```python
+{
+    "question": """who won 2020 icc world cup?""",
+    "context": """The 2022 ICC Men's T20 World Cup, held from October 16 to November 13, 2022, in Australia, was the eighth edition of the tournament. Originally scheduled for 2020, it was postponed due to the COVID-19 pandemic. England emerged victorious, defeating Pakistan by five wickets in the final to clinch their second ICC Men's T20 World Cup title.""",
+    "answer": """England""",
+    "verification": ContextPrecisionVerification(
+        reason="the context was useful in clarifying the situation regarding the 2020 ICC World Cup and indicating that England was the winner of the tournament that was intended to be held in 2020 but actually took place in 2022.",
+        verdict=1,
+    ).dict(),
+}
+```
+
+### Step 2
+Calculate the mean of `precision@k` to arrive at the final context precision score.
 
 ```python
-CONTEXT_RELEVANCE = Prompt(
-    name="context_relevancy",
-    instruction="""Please extract relevant sentences from the provided context that is absolutely required answer the following question. If no relevant sentences are found, or if you believe the question cannot be answered from the given context, return the phrase "Insufficient Information".  While extracting candidate sentences you're not allowed to make any changes to sentences from given context.""",
-    input_keys=["question", "context"],
-    output_key="candidate sentences",
-    output_type="json",
-)
+class ContextPrecision(MetricWithLLM):
+    def _calculate_average_precision(
+        self, verifications: t.List[ContextPrecisionVerification]
+    ) -> float:
+        score = np.nan
+
+        verdict_list = [1 if ver.verdict else 0 for ver in verifications]
+        denominator = sum(verdict_list) + 1e-10
+        numerator = sum(
+            [
+                (sum(verdict_list[: i + 1]) / (i + 1)) * verdict_list[i]
+                for i in range(len(verdict_list))
+            ]
+        )
+        score = numerator / denominator
+        if np.isnan(score):
+            logger.warning(
+                "Invalid response format. Expected a list of dictionaries with keys 'verdict'"
+            )
+        return score
 ```
