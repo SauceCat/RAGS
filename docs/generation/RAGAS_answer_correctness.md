@@ -1,16 +1,18 @@
 # RAGAS: Answer Correctness (Generated Answer <-> Answer)
 Reference: https://docs.ragas.io/en/stable/concepts/metrics/answer_correctness.html
 
-Answer correctness encompasses two critical aspects: semantic similarity between the generated answer and the ground truth, as well as factual similarity. These aspects are combined using a weighted scheme to formulate the answer correctness score. 
+While answer correctness includes both semantic and factual similarity, we'll focus here on factual similarity, as semantic similarity has been addressed elsewhere.
+
+Factual similarity evaluation process:
+
+1. Classify each statement in the generated answer and ground truth as TP, FP or FN.
+2. Using the classified statements, calculate an F1 score. This score represents the balance between precision and recall of factual statements.
 
 ## Calculation
 class: `AnswerCorrectness`
 
 ### Step 1
-Calculate the factual correctness. It quantifies the factual overlap between the generated answer and the ground truth answer. This is done using the concepts of:
-- TP (True Positive): Facts or statements that are present in both the ground truth and the generated answer.
-- FP (False Positive): Facts or statements that are present in the generated answer but not in the ground truth.
-- FN (False Negative): Facts or statements that are present in the ground truth but not in the generated answer.
+Extract statements for both generated answer and ground truth answers.
 
 ```python
 class AnswerCorrectness(MetricWithLLM, MetricWithEmbeddings):
@@ -50,7 +52,7 @@ class AnswerCorrectness(MetricWithLLM, MetricWithEmbeddings):
 ```
 
 ### Step 2
-We can use the formula for the F1 score to quantify correctness based on the number of statements in each of these lists:
+Classify the extracted statements into TP, FP or FN, and calculate the F1 score.
 
 ```python
 class AnswerCorrectness(MetricWithLLM, MetricWithEmbeddings):
@@ -168,7 +170,7 @@ example:
 ```
 
 ### Step 3
-Once we have the semantic similarity, we take a weighted average of the semantic similarity and the factual similarity calculated above to arrive at the final score.
+The overall answer correctness is a weighted average of the semantic similarity and the factual similarity.
 
 ```python
 class AnswerCorrectness(MetricWithLLM, MetricWithEmbeddings):

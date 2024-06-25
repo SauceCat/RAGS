@@ -2,7 +2,6 @@
 Reference: https://docs.ragas.io/en/stable/concepts/metrics/answer_relevance.html
 
 Assess the relevance of the generated answer to the original question using an indirect method:
-
 1. Generate multiple questions that the answer could respond to.
 2. Calculate the cosine similarity between each generated question and the original question.
 3. Take the average of these similarity scores.
@@ -13,11 +12,7 @@ This approach evaluates relevance by considering how well the generated answer a
 class: `AnswerRelevancy`
 
 ### Step 1
-Reverse-engineer `n` variants of the question from the generated answer using a Large Language Model (LLM). For instance, for the first answer, the LLM might generate the following possible questions:
-
-- Question 1: "In which part of Europe is France located?"
-- Question 2: "What is the geographical location of France within Europe?"
-- Question 3: "Can you identify the region of Europe where France is situated?"
+Reverse-engineer `n` variants of the question from the generated answer.
 
 ```python
 class AnswerRelevancy(MetricWithLLM, MetricWithEmbeddings):

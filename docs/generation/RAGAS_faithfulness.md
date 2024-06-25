@@ -1,27 +1,13 @@
 # RAGAS: Faithfulness (Generated Answer <-> Retrieved Context)
 Reference: https://docs.ragas.io/en/stable/concepts/metrics/faithfulness.html
 
-$$
-\text{Faithfulness score} = {|\text{Number of claims in the generated answer that can be inferred from given context}| \over |\text{Total number of claims in the generated answer}|}
-$$
-
-## Comments
-
-Extract sentences from the original context before LLM evaluation should be a more reliable approach. This method ensures:
-- Preservation of the original text.
-- Prevention of unintended alterations by the LLM, even if instructed not to change sentences.
-
-It's better to shift from sentence-level to chunk-level evaluation. Sentence-level judgement heavily relies on chunking strategies, large chunks containing a single-sentence answer may receive unfairly low scores. 
+Measures the factual consistency of the generated answer against the given context. The generated answer is regarded as faithful if all the statements that are made in the answer can be inferred from the given context.
 
 ## Calculation
 class: `Faithfulness`
 
 ### Step 1
 Break the generated answer into individual statements.
-
-Statements:
-- Statement 1: "Einstein was born in Germany."
-- Statement 2: "Einstein was born on 20th March 1879."
 
 ```python
 class Faithfulness(MetricWithLLM):

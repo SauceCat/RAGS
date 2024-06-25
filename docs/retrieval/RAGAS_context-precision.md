@@ -1,7 +1,7 @@
 # RAGAS: Context Precision (Retrieved Context <-> Ground Truth Answer)
 Reference: https://docs.ragas.io/en/stable/concepts/metrics/context_precision.html
 
-Assesses if relevant items from ground truth are ranked higher in the retrieved contexts. Ideal scenario: All relevant chunks appear at top ranks.
+Assesses if relevant items from ground truth are ranked higher in the retrieved contexts.
 
 ## Calculation
 class: `ContextPrecision`
@@ -21,8 +21,6 @@ class ContextPrecision(MetricWithLLM):
             for c in contexts
         ]
 ```
-
-Here, we use prompt with a few examples:
 
 instruction:
 

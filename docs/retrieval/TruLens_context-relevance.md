@@ -1,15 +1,10 @@
-# TruLens: Context Relevance
-To verify the quality of our retrieval, we want to make sure that each chunk of context is relevant to the input query. This is critical because this context will be used by the LLM to form an answer, so any irrelevant information in the context could be weaved into a hallucination.
+# TruLens: Context Relevance (Retrieved Context <-> Question)
+To verify the quality of our retrieval, we want to make sure that each chunk of context is relevant to the question. This is critical because this context will be used by the LLM to form an answer, so any irrelevant information in the context could be weaved into a hallucination.
 
-We use LLM-as-a-judge to evaluate the relevance of the context to the query by:
+Use LLM-as-a-judge to evaluate the relevance of the context to the question:
 - Assigning a score 0-10 based on the given relevance criteria.
 - Providing the criteria for the evaluation.
 - Providing the reasons for scoring based on the listed criteria step by step.
-
-## Comments
-The complexity of the instruction may make it challenging for the LLM to follow accurately on a 0-10 scale. This level of precision might be unnecessary. A simpler grading system could be more suitable and potentially yield more consistent results. We could consider these alternatives:
-- A basic 3-tier scale: Low, Medium, High
-- A binary assessment: Relevant or Not Relevant
 
 ## Code and Prompts
 
@@ -108,11 +103,10 @@ Context: list of chunks
 ]
 ```
 
-Result: 0.9
+Result: 0.9 (normalized score)
 
 Reason:
 
 - Criteria: The context provides the exact founding year of the University of Washington and additional relevant information about the university.
 
 - Supporting Evidence: The context states that the University of Washington was founded in 1861 in Seattle, which directly answers the question about the university's founding year. Additionally, it provides details about the university's campuses, student population, and infrastructure, demonstrating a comprehensive overview of the institution. This information is highly relevant to understanding the background and scope of the University of Washington, making the context very helpful in answering the question.
-

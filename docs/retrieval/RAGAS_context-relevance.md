@@ -1,26 +1,13 @@
 # RAGAS: Context Relevance (Retrieved Context <-> Question)
 Reference: https://docs.ragas.io/en/stable/concepts/metrics/context_relevancy.html
 
-$$
-\text{Context Relevancy} =
-\frac{|S|}{\text{Total number of sentences in the retrieved context}}
-$$
-
-where $|S|$ is the number of sentences extracted from the context that are relevant to the question.
-
-## Comments
-
-Extract sentences from the original context before LLM evaluation should be a more reliable approach. This method ensures:
-- Preservation of the original text.
-- Prevention of unintended alterations by the LLM, even if instructed not to change sentences. Following the instruction "While extracting candidate sentences you're not allowed to make any changes to sentences from given context." might be not necessary hard.
-
-It's better to shift from sentence-level to chunk-level evaluation. Sentence-level judgement heavily relies on chunking strategies, large chunks containing a single-sentence answer may receive unfairly low scores. 
+The portion of the sentences extracted from the context that are relevant to the question.
 
 ## Calculation
 class: `ContextRelevancy`
 
 ### Step 1
-Use LLM to extract sentences from the context that are relevant to the question.
+Extract sentences from the context that are relevant to the question.
 
 ```python
 class ContextRelevancy(MetricWithLLM):

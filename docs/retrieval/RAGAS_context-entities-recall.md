@@ -54,8 +54,6 @@ class ContextEntityRecall(MetricWithLLM):
         return self._compute_score(ground_truth.entities, contexts.entities)
 ```
 
-Here, we use prompt with a few examples:
-
 instruction:
 
 ```
@@ -83,7 +81,7 @@ sample example:
 ```
 
 ### Step 2
-Then we define can the context entity recall as follows:
+Calculate context entity recall as follows:
 
 Context Entity recall = `| CN ∩ GN | / | GN |`
 

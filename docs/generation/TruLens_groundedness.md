@@ -1,23 +1,10 @@
-# TruLens: Groundedness
-LLMs can generate answers that may stray from provided context, potentially leading to plausible but inaccurate information. To assess the accuracy of these responses, we can:
+# TruLens: Groundedness (Generated Answer <-> Retrieved Context)
 
-1. Break down the answer into individual claims.
-2. Evaluate each claim against the retrieved context.
-
-We use LLM-as-a-judge to assess response groundedness by:
-1. Split the response into sentences using the Punkt Sentence Tokenizer.
+Use LLM-as-a-judge to assess the groundedness of the generated answer by:
+1. Split the generated answer into sentences using the Punkt Sentence Tokenizer.
 2. For each sentence, prompt the LLM to:
-   - Rate the overlap between the source and the sentence on a 0-10 scale.
-   - Explain the rating, citing specific supporting evidence from the source.
-
-## Comments
-Similar to the comments [here](../../retrieval/relevance/TruLens_context-relevance.md#comments)
-
-Also, evaluating information overlap is unnecessarily complex. Instead, we should focus on whether each claim in the response is supported by the context. It's important to note that not every sentence contains a claim requiring verification. Our process should:
-
-1. Identify and extract the actual claims from the response.
-2. Evaluate the groundedness of these specific claims against the provided context.
-
+- Rate the overlap between the source and the sentence on a 0-10 scale.
+- Explain the rating, citing specific supporting evidence from the source.
 
 ## Code and Prompts
 
@@ -114,7 +101,7 @@ Statement (Response):
 "The University of Washington was founded in 1861."
 ```
 
-Result: 1
+Result: 1 (normalized score)
 
 Reasons:
 - STATEMENT 0:

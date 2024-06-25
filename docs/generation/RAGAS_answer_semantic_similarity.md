@@ -1,14 +1,13 @@
 # RAGAS: Answer semantic similarity (Generated Answer <-> Answer)
 Reference: https://docs.ragas.io/en/stable/concepts/metrics/semantic_similarity.html
 
-The concept of Answer Semantic Similarity pertains to the assessment of the semantic resemblance between the generated answer and the ground truth. 
-
-## Calculation
-class: `AnswerSimilarity`
-
+Simply calculate the semantic similarity between the generated answer and the ground truth answer.
 1. Vectorize the ground truth answer using the specified embedding model.
 2. Vectorize the generated answer using the same embedding model.
 3. Compute the cosine similarity between the two vectors.
+
+## Calculation
+class: `AnswerSimilarity`
 
 ```python
 class AnswerSimilarity(MetricWithLLM, MetricWithEmbeddings):
