@@ -6,6 +6,8 @@ BLEU (Bilingual Evaluation Understudy) is a metric used to evaluate the quality 
 ## Limitations
 BLEU's primary drawback for evaluating generated answers is its focus on token-level accuracy, which is less important than overall semantic correctness. Variations in wording are acceptable as long as the intended meaning is preserved.
 
+But it might be suitable for QA systems where the answer is expected to be a verbatim match with the reference. For example, the answer might be event dates, names, or other factual information.
+
 ## Calculation
 
 Here's a step-by-step explanation with a concrete example:
