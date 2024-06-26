@@ -11,6 +11,7 @@ The following five evaluation metrics are available.
 - ROUGE-SU: Skip-bigram plus unigram-based co-occurrence statistics.
 
 ## Limitations
+ROUGE shares BLEU's limitation of focusing on exact token matching, rather than evaluating overall semantic accuracy or meaning preservation.
 
 ## Calculation
 Let's go through the steps to calculate ROUGE-L with a concrete example.
