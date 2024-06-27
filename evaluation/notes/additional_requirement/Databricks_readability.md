@@ -5,7 +5,7 @@
 - **Type:** LLM-as-a-judge
 - **Comment:** Defining objective criteria for "Readability" is challenging.
 
-It measures how readable is the answer, does it have redundant information or incomplete information that hurts the readability of the answer, grading scale: 0-3.
+Readability measures how readable is the answer, does it have redundant information or incomplete information that hurts the readability of the answer, grading scale: 0-3.
 
 ## Prompt
 

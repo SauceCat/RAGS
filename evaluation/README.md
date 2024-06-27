@@ -11,6 +11,10 @@ We group the evaluation methodologies according to the base for evaluation.
 | Metric | Type |
 | ------ | ---- |
 | [RECALL: Counterfactual Robustness](notes/additional_requirement/RECALL_counterfactual-robustness.md) | Exact Match |
+| [RGB: Counterfactual Robustness](notes/additional_requirement/RGB_counterfactual-robustness.md) | Exact Match |
+| [RGB: Information Integration](notes/additional_requirement/RGB_information-integration.md) | Exact Match |
+| [RGB: Negative Rejection](notes/additional_requirement/RGB_negative-rejection.md) | Exact Match |
+| [RGB: Noise Robustness](notes/additional_requirement/RGB_noise-robustness.md) | Exact Match |
 
 ## Retrieved Context
 | Metric | Type |
@@ -21,9 +25,3 @@ We group the evaluation methodologies according to the base for evaluation.
 | Metric | Type |
 | ------ | ---- |
 | [Latency](notes/additional_requirement/latency.md) | System Efficiency |
-
-
-
-
-
-<img src="notes/additional_requirement/RECALL_counterfactual-robustness.md">

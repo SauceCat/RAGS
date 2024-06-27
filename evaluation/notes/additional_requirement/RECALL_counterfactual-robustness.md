@@ -4,10 +4,9 @@
 - **Reference:** [RECALL: A Benchmark for LLMs Robustness against External Counterfactual Knowledge](https://arxiv.org/pdf/2311.08147)
 - **Type:** Exact Match
 
-The models' performance is evaluated across two critical aspects. 
-
-- First, we assess the Response Quality Aspect, which examines whether models can continue to generate high-quality responses even when faced with interfering counterfactual information.
-- Second, we consider the Robustness Aspect, which measures the models' ability to resist incorporating counterfactual information from the provided contexts into their responses.
+Counterfactual Robustness evaluates model's performance across two critical aspects. 
+- **Response Quality** examines whether models can continue to generate high-quality responses even when faced with interfering counterfactual information.
+- **Robustness Aspect** measures the models' ability to resist incorporating counterfactual information from the provided contexts into their responses.
 
 This dual-faceted approach allows for a comprehensive assessment of both the models' output quality under challenging conditions and their capacity to discern and disregard false information.
 
