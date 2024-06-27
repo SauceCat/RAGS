@@ -1,5 +1,8 @@
-# Databricks: Comprehensiveness (Generated Answer <-> Question)
-Reference: https://www.databricks.com/blog/LLM-auto-eval-best-practices-RAG
+# Databricks: Comprehensiveness
+
+- **Dimension:** Generated Answer <-> Question
+- **Reference:** [Best Practices for LLM Evaluation of RAG Applications](https://www.databricks.com/blog/LLM-auto-eval-best-practices-RAG)
+- **Type:** LLM-as-a-judge
 
 How comprehensive is the answer, does it fully answer all aspects of the question and provide comprehensive explanation and other necessary information, grading scale: 0-3.
 
@@ -47,3 +50,6 @@ Below is your grading rubric:
 
   - Score 3: the answer is correct, and covers all the main aspects of the question
 ```
+
+## Limitations
+- Defining objective criteria for "Comprehensiveness" is challenging.

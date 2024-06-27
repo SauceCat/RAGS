@@ -3,7 +3,6 @@
 - **Dimension:** Generated Answer
 - **Reference:** https://docs.ragas.io/en/stable/concepts/metrics/critique.html
 - **Type:** LLM-as-a-judge
-- **Comment:** Defining objective criteria is challenging.
 
 Aspect Critique enables a flexible, criteria-based evaluation of generated answers. Users define an assessment criterion by formulating a yes/no question. Then an LLM will act as a judge to analyzes the answer based solely on this specified criterion. 
 
@@ -62,3 +61,6 @@ example:
     ).dict(),
 }
 ```
+
+## Limitations
+- Defining objective criteria is challenging.

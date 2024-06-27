@@ -1,5 +1,8 @@
-# Databricks: Correctness (Generated Answer <-> Question)
-Reference: https://www.databricks.com/blog/LLM-auto-eval-best-practices-RAG
+# Databricks: Correctness
+
+- **Dimension:** Generated Answer <-> Question
+- **Reference:** [Best Practices for LLM Evaluation of RAG Applications](https://www.databricks.com/blog/LLM-auto-eval-best-practices-RAG)
+- **Type:** LLM-as-a-judge
 
 Evaluates whether the answer correctly answer the question, grading scale: 0-3.
 
@@ -61,3 +64,6 @@ Below is your grading rubric:
 
           Click on the "Terminate" button. A confirmation dialog will appear. Click "Terminate" again to confirm the action."
 ```
+
+## Limitations
+- Defining objective criteria for "Correctness" is challenging.

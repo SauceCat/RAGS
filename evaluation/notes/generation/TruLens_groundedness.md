@@ -1,10 +1,14 @@
-# TruLens: Groundedness (Generated Answer <-> Retrieved Context)
+# TruLens: Groundedness
+
+- **Dimension:** Generated Answer <-> Retrieved Context
+- **Reference:** https://www.trulens.org/trulens_eval/getting_started/core_concepts/rag_triad/#groundedness
+- **Type:** LLM-as-a-judge
 
 Use LLM-as-a-judge to assess the groundedness of the generated answer by:
-1. Split the generated answer into sentences using the Punkt Sentence Tokenizer.
-2. For each sentence, prompt the LLM to:
-- Rate the overlap between the source and the sentence on a 0-10 scale.
-- Explain the rating, citing specific supporting evidence from the source.
+- Split the generated answer into sentences using the Punkt Sentence Tokenizer.
+- For each sentence, prompt the LLM to:
+    - Rate the overlap between the source and the sentence on a 0-10 scale.
+    - Explain the rating, citing specific supporting evidence from the source.
 
 ## Code and Prompts
 
@@ -108,3 +112,6 @@ Reasons:
     - Criteria: The University of Washington was founded in 1861.
     - Supporting Evidence: The source states, "The University of Washington, founded in 1861 in Seattle..."
     - Score: 10
+
+## Limitations
+Same as [TruLens: Answer Relevance](TruLens_answer-relevance.md).

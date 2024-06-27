@@ -1,5 +1,8 @@
-# LangChain: Faithfulness (Generated Answer <-> Retrieved Context, Question)
-Reference: https://github.com/langchain-ai/langchain-benchmarks/blob/main/langchain_benchmarks/rag/evaluators.py
+# LangChain: Faithfulness
+
+- **Dimension:** Generated Answer <-> Retrieved Context, Question
+- **Reference:** [Evaluating RAG Architectures on Benchmark Tasks](https://langchain-ai.github.io/langchain-benchmarks/notebooks/retrieval/comparing_techniques.html)
+- **Type:** LLM-as-a-judge
 
 Given the question, evaluates how closely the generated answer adheres to the retrieved context, with higher scores indicating greater faithfulness.
 
@@ -53,3 +56,6 @@ Overall, the response is mostly aligned with the reference documents and include
 
 Rating: [[7]]
 ```
+
+## Limitations
+Same as [LangChain: Accuracy](LangChain_accuracy.md).

@@ -1,9 +1,12 @@
-# BERTScore (Generated Answer <-> Ground Truth Answer)
-Reference: https://huggingface.co/spaces/evaluate-metric/bertscore
+# BERTScore
 
-BERTScore leverages the pre-trained contextual embeddings from BERT (Bidirectional Encoder Representations from Transformers) and matches words in candidate and reference sentences by cosine similarity. It has been shown to correlate with human judgment on sentence-level and system-level evaluation. Moreover, BERTScore computes precision, recall, and F1 measure, which can be useful for evaluating different language generation tasks.
+- **Dimension:** Generated Answer <-> Ground Truth Answer
+- **Reference:** https://huggingface.co/spaces/evaluate-metric/bertscore
+- **Type:** Token-wise Accuracy
 
-BERTScore provides a nuanced evaluation by capturing semantic similarities using contextual embeddings, making it more robust compared to traditional word overlap metrics like BLEU or ROUGE.
+BERTScore leverages the pre-trained contextual embeddings from BERT (Bidirectional Encoder Representations from Transformers) and matches words in candidate and reference sentences by cosine similarity. It provides a nuanced evaluation by capturing semantic similarities using contextual embeddings, making it more robust compared to traditional word overlap metrics like BLEU or ROUGE.
+
+It has been shown to correlate with human judgment on sentence-level and system-level evaluation. Moreover, BERTScore computes precision, recall, and F1 measure, which can be useful for evaluating different language generation tasks.
 
 ## Calculation
 Core concepts:
@@ -59,3 +62,6 @@ For each token in the candidate sentence, the highest similarity score with any 
 F1 = 2 * (Precision * Recall) / (Precision + Recall)
     ≈ 2 * (0.686 * 0.75) / (0.686 + 0.75)
     ≈ 0.716
+
+## Limitations
+Check the **Limitations and bias** session in the reference.

@@ -1,18 +1,14 @@
-# RAGAS: Answer Correctness (Generated Answer <-> Answer)
-Reference: https://docs.ragas.io/en/stable/concepts/metrics/answer_correctness.html
+# RAGAS: Answer Correctness
 
-While answer correctness includes both semantic and factual similarity, we'll focus here on factual similarity, as semantic similarity has been addressed elsewhere.
+- **Dimension:** Generated Answer <-> Ground Truth Answer
+- **Reference:** https://docs.ragas.io/en/stable/concepts/metrics/answer_correctness.html
+- **Type:** Factual Consistency
 
-Factual similarity evaluation process:
-
-1. Classify each statement in the generated answer and ground truth as TP, FP or FN.
-2. Using the classified statements, calculate an F1 score. This score represents the balance between precision and recall of factual statements.
+Answer Correctness evaluates how well the generated answer captures the factual content of the ground truth. While answer correctness encompasses both semantic and factual similarity, this assessment focuses solely on factual accuracy, as semantic similarity is addressed separately.
 
 ## Calculation
-class: `AnswerCorrectness`
-
-### Step 1
-Extract statements for both generated answer and ground truth answers.
+### Step 1: Extract statements
+For both generated answer and ground truth answers.
 
 ```python
 class AnswerCorrectness(MetricWithLLM, MetricWithEmbeddings):
@@ -51,8 +47,8 @@ class AnswerCorrectness(MetricWithLLM, MetricWithEmbeddings):
             )
 ```
 
-### Step 2
-Classify the extracted statements into TP, FP or FN, and calculate the F1 score.
+### Step 2: Classify the extracted statements
+Into TP, FP or FN, and calculate the F1 score.
 
 ```python
 class AnswerCorrectness(MetricWithLLM, MetricWithEmbeddings):
@@ -169,7 +165,7 @@ example:
 }
 ```
 
-### Step 3
+### Step 3: Calculate the overall score
 The overall answer correctness is a weighted average of the semantic similarity and the factual similarity.
 
 ```python

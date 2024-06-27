@@ -1,17 +1,14 @@
-# RAGAS: Answer Relevance (Generated Answer <-> Question)
-Reference: https://docs.ragas.io/en/stable/concepts/metrics/answer_relevance.html
+# RAGAS: Answer Relevance
 
-Assess the relevance of the generated answer to the original question using an indirect method:
-1. Generate multiple questions that the answer could respond to.
-2. Calculate the cosine similarity between each generated question and the original question.
-3. Take the average of these similarity scores.
+- **Dimension:** Generated Answer <-> Question
+- **Reference:** https://docs.ragas.io/en/stable/concepts/metrics/answer_relevance.html
+- **Type:** Semantic Similarity
 
-This approach evaluates relevance by considering how well the generated answer aligns with questions similar to the original, rather than directly comparing the answer to the question itself.
+Answer Relevance assess the relevance of the generated answer to the original question using an indirect method. This approach evaluates relevance by considering how well the generated answer aligns with questions similar to the original, rather than directly comparing the answer to the question itself.
 
 ## Calculation
-class: `AnswerRelevancy`
 
-### Step 1
+### Step 1: Generate questions
 Reverse-engineer `n` variants of the question from the generated answer.
 
 ```python
@@ -57,8 +54,8 @@ example (committal):
 }
 ```
 
-### Step 2
-Calculate the mean cosine similarity between the generated questions and the actual question.
+### Step 2: Calculate the mean cosine similarity
+between the generated questions and the actual question.
 
 ```python
 class AnswerRelevancy(MetricWithLLM, MetricWithEmbeddings):

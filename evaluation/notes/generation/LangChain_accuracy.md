@@ -1,4 +1,8 @@
-# LangChain: Accuracy (Generated Answer <-> Ground Truth Answer, Question)
+# LangChain: Accuracy
+
+- **Dimension:** Generated Answer <-> Ground Truth Answer, Question
+- **Reference:** [Evaluating RAG Architectures on Benchmark Tasks](https://langchain-ai.github.io/langchain-benchmarks/notebooks/retrieval/comparing_techniques.html)
+- **Type:** LLM-as-a-judge
 
 Given the context, evaluates the level of alignment between the generated answer and the ground truth answer.
 
@@ -47,3 +51,17 @@ The assistant's answer provides specific examples of toolkits in LangChain, whic
 
 Rating: [[7]]
 ```
+
+## Limitations
+- Defining objective criteria for "Accuracy" is challenging.
+- A 0-10 scale for evaluation can be overly granular and potentially problematic. The drawbacks include:
+    - Ambiguity: Defining clear boundaries between adjacent scores (e.g., 7 vs. 8) can be challenging.
+    - Consistency: Maintaining consistent scoring across different evaluators or even for a single evaluator over time can be difficult with so many options.
+    - Unnecessary Precision: Such fine-grained distinctions may not provide meaningful additional information in many cases.
+
+  A simpler scale could be more effective and reliable:
+    - 3-point scale: Low, Medium, High
+    - 5-point scale: Very Poor, Poor, Average, Good, Excellent
+    - Binary scale: Satisfactory / Unsatisfactory
+  
+  These simplified scales can offer clearer distinctions between categories, improve consistency in scoring, and still provide meaningful evaluations without the complexity of a 0-10 system.

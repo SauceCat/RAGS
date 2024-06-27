@@ -1,5 +1,8 @@
-# ROUGE (Generated Answer <-> Ground Truth Answer)
-Reference: https://huggingface.co/spaces/evaluate-metric/rouge
+# ROUGE
+
+- **Dimension:** Generated Answer <-> Ground Truth Answer
+- **Reference:** https://huggingface.co/spaces/evaluate-metric/rouge
+- **Type:** Token-wise Accuracy
 
 ROUGE (Recall-Oriented Understudy for Gisting Evaluation) is a set of metrics and a software package used for evaluating automatic summarization and machine translation software in natural language processing. The metrics compare an automatically produced summary or translation against a reference or a set of references (human-produced) summary or translation. 
 
@@ -10,11 +13,8 @@ The following five evaluation metrics are available.
 - ROUGE-S: Skip-bigram based co-occurrence statistics. Skip-bigram is any pair of words in their sentence order.
 - ROUGE-SU: Skip-bigram plus unigram-based co-occurrence statistics.
 
-## Limitations
-ROUGE shares BLEU's limitation of focusing on exact token matching, rather than evaluating overall semantic accuracy or meaning preservation.
-
 ## Calculation
-Let's go through the steps to calculate ROUGE-L with a concrete example.
+Let's go through the steps to calculate **ROUGE-L** with a concrete example.
 
 ### Step 1: Tokenize the Sentences
 First, break down the sentences into individual words (tokens).
@@ -34,32 +34,11 @@ Count the number of words in the LCS.
 ### Step 4: Calculate Precision, Recall, and F1-Score
 Using the LCS length, calculate precision, recall, and F1-score.
 
-Precision: 
-$$
-\text{Precision} = \frac{\text{LCS Length}}{\text{Number of words in machine translation}} 
-= \frac{5}{5} = 1.0
-$$
+- Precision: `LCS Length / Number of words in machine translation = 5 / 5 = 1.0`
+- Recall: `LCS Length / Number of words in reference translation = 5 / 6 = 0.833`
+- F1-Score: `2 * Precision * Recall / (Precision + Recall) = 2 * 1.0 * 0.833 / (1.0 + 0.833) = 0.909`
 
-Recall:
-$$
-\text{Recall} = \frac{\text{LCS Length}}{\text{Number of words in reference translation}}
-= \frac{5}{6} \approx 0.833
-$$
-
-F1-Score:
-$$
-\text{F1-Score} = \frac{2 \times \text{Precision} \times \text{Recall}}{\text{Precision} + \text{Recall}}
-= \frac{2 \times 1.0 \times 0.833}{1.0 + 0.833}
-= \frac{1.666}{1.833} \approx 0.909
-$$
-
-### Summary
-- LCS Length: 5
-- Precision: 1.0
-- Recall: 0.833
-- F1-Score: 0.909
-
-So, the ROUGE-L score for this example is approximately 0.909.
+So, the ROUGE-L score for this example is approximately 0.909. Reproduce using `rouge_score`:
 
 ```python
 from rouge_score import rouge_scorer
@@ -78,22 +57,22 @@ Let's consider another example to illustrate the calculation further.
 - Reference Translation: "The quick brown fox jumps over the lazy dog."
 - Machine Translation: "The fast brown fox leaps over the lazy dog."
 
-Step 1: Tokenize the Sentences
+**Step 1: Tokenize the Sentences**
 - Reference: "The", "quick", "brown", "fox", "jumps", "over", "the", "lazy", "dog"
 - Machine: "The", "fast", "brown", "fox", "leaps", "over", "the", "lazy", "dog"
 
-Step 2: Find the Longest Common Subsequence (LCS)
+**Step 2: Find the Longest Common Subsequence (LCS)**
 - LCS: "The brown fox over the lazy dog"
 
-Step 3: Calculate LCS Length
+**Step 3: Calculate LCS Length**
 - LCS Length: 7 words
 
-Step 4: Calculate Precision, Recall, and F1-Score
-- Precision: $\text{Precision} = \frac{7}{9} \approx 0.778$
-- Recall: $\text{Recall} = \frac{7}{9} \approx 0.778$
-- F1-Score: $\text{F1-Score} = \frac{2 \times 0.778 \times 0.778}{0.778 + 0.778}$
+**Step 4: Calculate Precision, Recall, and F1-Score**
+- Precision: `7 / 9 = 0.778`
+- Recall: `7 / 9 = 0.778`
+- F1-Score: `(2 * 0.778 * 0.778) / (0.778 + 0.778) = 0.778`
 
-In this case, the ROUGE-L score is approximately 0.778.
+In this case, the ROUGE-L score is approximately 0.778. Reproduce using `rouge_score`:
 
 ```python
 from rouge_score import rouge_scorer
@@ -106,3 +85,6 @@ scores = scorer.score(
 print(scores)
 # {'rougeL': Score(precision=0.7777777777777778, recall=0.7777777777777778, fmeasure=0.7777777777777778)}
 ```
+
+## Limitations
+Check the **Limitations and Bias** session in the reference.

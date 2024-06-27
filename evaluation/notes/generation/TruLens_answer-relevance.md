@@ -1,8 +1,10 @@
-# TruLens: Answer Relevance (Generated Answer <-> Question)
-Use LLM-as-a-judge to evaluate the relevance of the generated answer to the question:
-- Assigning a score 0-10 based on the given relevance criteria.
-- Providing the criteria for the evaluation.
-- Providing the reasons for scoring based on the listed criteria step by step.
+# TruLens: Answer Relevance
+
+- **Dimension:** Generated Answer <-> Question
+- **Reference:** https://www.trulens.org/trulens_eval/getting_started/core_concepts/rag_triad/#answer-relevance
+- **Type:** LLM-as-a-judge
+
+Use LLM-as-a-judge to evaluate the relevance of the generated answer to the question, score scale: 0-10.
 
 ## Code and Prompts
 
@@ -91,3 +93,6 @@ Reason:
 - Criteria: The response directly answers the question in the prompt.
 
 - Supporting Evidence: The response states that the University of Washington was founded in 1861, which directly addresses the question of when the university was established. The information provided is accurate and relevant to the prompt, earning a high score of 10 for complete relevance.
+
+## Limitations
+Similar to [LangChain: Accuracy](LangChain_accuracy.md).

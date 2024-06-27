@@ -1,4 +1,8 @@
-# LangChain: EmbeddingDistance (Generated Answer <-> Ground Truth Answer)
+# LangChain: EmbeddingDistance
+
+- **Dimension:** Generated Answer <-> Ground Truth Answer
+- **Reference:** [Evaluating RAG Architectures on Benchmark Tasks](https://langchain-ai.github.io/langchain-benchmarks/notebooks/retrieval/comparing_techniques.html)
+- **Type:** Semantic Similarity
 
 Simply calculate the embedding distance between the generated answer and the ground truth answer.
 

@@ -3,7 +3,6 @@
 - **Dimension:** Generated Answer
 - **Reference:** [Best Practices for LLM Evaluation of RAG Applications](https://www.databricks.com/blog/LLM-auto-eval-best-practices-RAG)
 - **Type:** LLM-as-a-judge
-- **Comment:** Defining objective criteria for "Readability" is challenging.
 
 Readability measures how readable is the answer, does it have redundant information or incomplete information that hurts the readability of the answer, grading scale: 0-3.
 
@@ -51,3 +50,6 @@ Below is your grading rubric:
 
   - Score 3: the answer is correct and reader friendly, no obvious piece that affect readability.
 ```
+
+## Limitations
+- Defining objective criteria for "Readability" is challenging.

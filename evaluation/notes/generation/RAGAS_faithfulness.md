@@ -1,12 +1,14 @@
-# RAGAS: Faithfulness (Generated Answer <-> Retrieved Context)
-Reference: https://docs.ragas.io/en/stable/concepts/metrics/faithfulness.html
+# RAGAS: Faithfulness
 
-Measures the factual consistency of the generated answer against the given context. The generated answer is regarded as faithful if all the statements that are made in the answer can be inferred from the given context.
+- **Dimension:** Generated Answer <-> Retrieved Context
+- **Reference:** https://docs.ragas.io/en/stable/concepts/metrics/faithfulness.html
+- **Type:** Factual Consistency
+
+Faithfulness measures the factual consistency of the generated answer against the given context. The generated answer is regarded as faithful if all the statements that are made in the answer can be inferred from the given context.
 
 ## Calculation
-class: `Faithfulness`
 
-### Step 1
+### Step 1: Extract statements
 Break the generated answer into individual statements.
 
 ```python
@@ -63,7 +65,7 @@ example:
 }
 ```
 
-### Step 2
+### Step 2: Verify each statement
 For each of the generated statements, verify if it can be inferred from the given context.
 
 ```python
@@ -125,8 +127,7 @@ example:
 }
 ```
 
-### Step 3
-Calculate the faithfulness score.
+### Step 3: Calculate the faithfulness score
 
 ```python
 class Faithfulness(MetricWithLLM):
