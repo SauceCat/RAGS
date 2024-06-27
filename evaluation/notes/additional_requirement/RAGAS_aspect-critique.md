@@ -1,10 +1,11 @@
-# RAGAS: Aspect Critique (Generated Answer)
-Reference: https://docs.ragas.io/en/stable/concepts/metrics/critique.html
+# RAGAS: Aspect Critique
 
-This method allows for flexible, criteria-based assessment of the generated answer:
-- Users specify an evaluation criterion in the form of a yes/no question.
-- Use LLM-as-as-judge to give the answer based exclusively on the provided criterion.
-- The result is a binary response - either "Yes" or "No".
+- **Dimension:** Generated Answer
+- **Reference:** https://docs.ragas.io/en/stable/concepts/metrics/critique.html
+- **Type:** LLM-as-a-judge
+- **Comment:** Defining objective criteria is challenging.
+
+It enables a flexible, criteria-based evaluation of generated answers. Users define an assessment criterion by formulating a yes/no question. Then an LLM will act as a judge to analyzes the answer based solely on this specified criterion. 
 
 Example Criteria:
 - Does the response contain misinformation?
@@ -12,8 +13,6 @@ Example Criteria:
 - Could the content potentially harm individuals or society?
 
 ## Calculation
-class: `AspectCritique`
-
 ```python
 class AspectCritique(MetricWithLLM):
     def prompt_format(
@@ -25,7 +24,7 @@ class AspectCritique(MetricWithLLM):
         if context is not None:
             if isinstance(context, list):
                 context = "\n".join(context)
-            question = f"{question } answer using context: {context}"
+            question = f"{question} answer using context: {context}"
         return self.critic_prompt.format(
             input=question, submission=answer, criteria=self.definition
         )

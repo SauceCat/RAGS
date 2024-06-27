@@ -1,13 +1,15 @@
-# Databricks: Readability (Generated Answer)
-Reference: https://www.databricks.com/blog/LLM-auto-eval-best-practices-RAG
+# Databricks: Readability
 
-How readable is the answer, does it have redundant information or incomplete information that hurts the readability of the answer, grading scale: 0-3.
+- **Dimension:** Generated Answer
+- **Reference:** [Best Practices for LLM Evaluation of RAG Applications](https://www.databricks.com/blog/LLM-auto-eval-best-practices-RAG)
+- **Type:** LLM-as-a-judge
+- **Comment:** Defining objective criteria for "Readability" is challenging.
+
+It measures how readable is the answer, does it have redundant information or incomplete information that hurts the readability of the answer, grading scale: 0-3.
 
 ## Prompt
 
 **SYSTEM**
-The original article actually combine three grading rubric together in one single prompt.
-
 ```
 Please act as an impartial judge and evaluate the quality of the provided answer which attempts to answer the provided question based on a provided context.
 
