@@ -2,7 +2,7 @@
 
 - **Dimension:** Generated Answer <-> Ground Truth Answer
 - **Reference:** https://huggingface.co/spaces/evaluate-metric/bertscore
-- **Type:** Token-wise Accuracy
+- **Type:** Semantic Similarity, Token-wise Accuracy
 
 BERTScore leverages the pre-trained contextual embeddings from BERT (Bidirectional Encoder Representations from Transformers) and matches words in candidate and reference sentences by cosine similarity. It provides a nuanced evaluation by capturing semantic similarities using contextual embeddings, making it more robust compared to traditional word overlap metrics like BLEU or ROUGE.
 

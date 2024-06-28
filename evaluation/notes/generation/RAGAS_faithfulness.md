@@ -2,7 +2,7 @@
 
 - **Dimension:** Generated Answer <-> Retrieved Context
 - **Reference:** https://docs.ragas.io/en/stable/concepts/metrics/faithfulness.html
-- **Type:** Factual Consistency
+- **Type:** LLM-as-a-tool, Factual Consistency
 
 Faithfulness measures the factual consistency of the generated answer against the given context. The generated answer is regarded as faithful if all the statements that are made in the answer can be inferred from the given context.
 

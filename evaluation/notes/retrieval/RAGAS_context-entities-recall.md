@@ -1,12 +1,13 @@
-# RAGAS: Context entities recall (Retrieved Context <-> Ground Truth Answer)
-Reference: https://docs.ragas.io/en/stable/concepts/metrics/context_entities_recall.html
+# RAGAS: Context Entity Recall
 
-Measures the proportion of ground truth entities present in the retrieved context. Particularly useful for fact-based applications (e.g., tourism help desks, historical Q&A).
+- **Dimension:** Retrieved Context <-> Ground Truth Answer
+- **Reference:** https://docs.ragas.io/en/stable/concepts/metrics/context_entities_recall.html
+- **Type:** LLM-as-a-tool, Entity Recall
+
+Context Entity Recall measures the proportion of ground truth entities present in the retrieved context. Particularly useful for fact-based applications (e.g., tourism help desks, historical Q&A).
 
 ## Calculation
-class: `ContextEntityRecall`
-
-### Step 1
+### Step 1: Extract entities
 Using LLM to find entities present in the ground truths and in the context.
 
 ```python
@@ -80,8 +81,7 @@ sample example:
 }
 ```
 
-### Step 2
-Calculate context entity recall as follows:
+### Step 2: Calculate context entity recall
 
 Context Entity recall = `| CN ∩ GN | / | GN |`
 

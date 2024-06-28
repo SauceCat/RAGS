@@ -1,12 +1,13 @@
-# RAGAS: Context Recall (Retrieved Context <-> Ground Truth Answer)
-Reference: https://docs.ragas.io/en/stable/concepts/metrics/context_recall.html
+# RAGAS: Context Recall
 
-Evaluates if each sentence in the ground truth answer can be traced back to the retrieved context.
+- **Dimension:** Retrieved Context <-> Ground Truth Answer, Question
+- **Reference:** https://docs.ragas.io/en/stable/concepts/metrics/context_recall.html
+- **Type:** LLM-as-a-judge
+
+Context Recall evaluates if each sentence in the ground truth answer can be traced back to the retrieved context.
 
 ## Calculation
-class: `ContextRecall`
-
-### Step 1
+### Step 1: Extract statements
 Break the ground truth answer into individual statements. For each of the ground truth statements, verify if it can be attributed to the retrieved context.
 
 ```python
@@ -57,8 +58,7 @@ sample example:
 }
 ```
 
-### Step 2
-Use the formula depicted above to calculate context recall.
+### Step 2: Calculate context recall
 
 ```python
 class ContextRecall(MetricWithLLM):

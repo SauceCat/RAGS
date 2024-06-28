@@ -1,13 +1,14 @@
-# RAGAS: Context Precision (Retrieved Context <-> Ground Truth Answer)
-Reference: https://docs.ragas.io/en/stable/concepts/metrics/context_precision.html
+# RAGAS: Context Precision
 
-Assesses if relevant items from ground truth are ranked higher in the retrieved contexts.
+- **Dimension:** Retrieved Context <-> Ground Truth Answer, Question
+- **Reference:** https://docs.ragas.io/en/stable/concepts/metrics/context_precision.html
+- **Type:** LLM-as-a-judge, IR Metrics
+
+Context Precision assesses if relevant items from ground truth are ranked higher in the retrieved contexts.
 
 ## Calculation
-class: `ContextPrecision`
-
-### Step 1
-For each chunk in retrieved context, check if it is relevant to arrive at the ground truth for the given question using LLM-as-a-judge.
+### Step 1: Retrieved context relevancy
+For each chunk in retrieved context, check if it is relevant to arrive at the ground truth for the given question.
 
 ```python
 class ContextPrecision(MetricWithLLM):
@@ -41,7 +42,7 @@ sample example:
 }
 ```
 
-### Step 2
+### Step 2: Precision@k
 Calculate the mean of `precision@k` to arrive at the final context precision score.
 
 ```python

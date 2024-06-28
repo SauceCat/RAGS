@@ -1,10 +1,16 @@
-# ARES: Context Relevance (Retrieved Context <-> Question)
-Reference: [ARES: An Automated Evaluation Framework for Retrieval-Augmented Generation Systems](https://arxiv.org/abs/2311.09476)
+# ARES: Context Relevance
 
-Fine-tune `DeBERTa-v3-Large` with a binary classifier head for Context Relevance: Is the passage returned relevant for answering the given query? Use a human preference validation set to assess model improvement after each epoch.
+- **Dimension:** Retrieved Context <-> Question
+- **Reference:** [ARES: An Automated Evaluation Framework for Retrieval-Augmented Generation Systems](https://arxiv.org/abs/2311.09476)
+- **Type:** LLM classifier
+
+Context Relevance: Is the passage returned relevant for answering the given query?
+
+Fine-tune `DeBERTa-v3-Large` with a binary classifier head for Context Relevance. Use a human preference validation set to assess model improvement after each epoch.
 
 ## Training Data
-Positive Samples: The questions are generated for each passage using `FLAN-T5 XXL`, providing natural positive samples where the passage-question relationship is known.
+Positive Samples: 
+- The questions are generated for each passage using `FLAN-T5 XXL`, providing natural positive samples where the passage-question relationship is known.
 
 Negative Samples:
 - Weak negatives: Randomly selected in-domain passages unrelated to the synthetic query.
@@ -29,3 +35,5 @@ Query:
 
 Low-quality queries are filtered by testing if a given query can retrieve its original passage as the top result using its retriever.
 
+## Limitations
+Same as [Answer Faithfulness](../generation/ARES_answer-faithfulness.md).

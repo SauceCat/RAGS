@@ -2,7 +2,7 @@
 
 - **Dimension:** Generated Answer <-> Ground Truth Answer
 - **Reference:** https://docs.ragas.io/en/stable/concepts/metrics/answer_correctness.html
-- **Type:** Factual Consistency
+- **Type:** LLM-as-a-tool, Factual Consistency
 
 Answer Correctness evaluates how well the generated answer captures the factual content of the ground truth. While answer correctness encompasses both semantic and factual similarity, this assessment focuses solely on factual accuracy, as semantic similarity is addressed separately.
 

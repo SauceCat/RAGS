@@ -1,10 +1,10 @@
-# TruLens: Context Relevance (Retrieved Context <-> Question)
-To verify the quality of our retrieval, we want to make sure that each chunk of context is relevant to the question. This is critical because this context will be used by the LLM to form an answer, so any irrelevant information in the context could be weaved into a hallucination.
+# TruLens: Context Relevance
 
-Use LLM-as-a-judge to evaluate the relevance of the context to the question:
-- Assigning a score 0-10 based on the given relevance criteria.
-- Providing the criteria for the evaluation.
-- Providing the reasons for scoring based on the listed criteria step by step.
+- **Dimension:** Retrieved Context <-> Question
+- **Reference:** https://www.trulens.org/trulens_eval/getting_started/core_concepts/rag_triad/#context-relevance
+- **Type:** LLM-as-a-judge
+
+To verify the quality of our retrieval, we want to make sure that each chunk of context is relevant to the question. This is critical because this context will be used by the LLM to form an answer, so any irrelevant information in the context could be weaved into a hallucination.
 
 ## Code and Prompts
 
