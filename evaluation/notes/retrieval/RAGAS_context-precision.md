@@ -1,6 +1,6 @@
 # RAGAS: Context Precision
 
-- **Dimension:** Retrieved Context <-> Ground Truth Answer, Question
+- **Dimension:** Retrieved Context <-> GroundTruth Answer, Question
 - **Reference:** https://docs.ragas.io/en/stable/concepts/metrics/context_precision.html
 - **Type:** LLM-as-a-judge, IR Metrics
 

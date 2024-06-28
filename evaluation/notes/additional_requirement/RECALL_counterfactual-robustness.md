@@ -1,6 +1,6 @@
 # RECALL: Counterfactual Robustness
 
-- **Dimension:** Generated Answer <-> Ground Truth Answer
+- **Dimension:** Generated Answer <-> GroundTruth Answer
 - **Reference:** [RECALL: A Benchmark for LLMs Robustness against External Counterfactual Knowledge](https://arxiv.org/pdf/2311.08147)
 - **Type:** Exact Match
 

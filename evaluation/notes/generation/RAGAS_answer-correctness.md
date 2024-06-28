@@ -1,6 +1,6 @@
 # RAGAS: Answer Correctness
 
-- **Dimension:** Generated Answer <-> Ground Truth Answer
+- **Dimension:** Generated Answer <-> GroundTruth Answer
 - **Reference:** https://docs.ragas.io/en/stable/concepts/metrics/answer_correctness.html
 - **Type:** LLM-as-a-tool, Factual Consistency
 

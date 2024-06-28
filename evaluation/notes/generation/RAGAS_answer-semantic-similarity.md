@@ -1,6 +1,6 @@
 # RAGAS: Answer Semantic Similarity
 
-- **Dimension:** Generated Answer <-> Ground Truth Answer
+- **Dimension:** Generated Answer <-> GroundTruth Answer
 - **Reference:** https://docs.ragas.io/en/stable/concepts/metrics/semantic_similarity.html
 - **Type:** Semantic Similarity
 

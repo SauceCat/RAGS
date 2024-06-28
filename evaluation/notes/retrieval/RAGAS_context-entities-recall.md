@@ -1,6 +1,6 @@
 # RAGAS: Context Entity Recall
 
-- **Dimension:** Retrieved Context <-> Ground Truth Answer
+- **Dimension:** Retrieved Context <-> GroundTruth Answer
 - **Reference:** https://docs.ragas.io/en/stable/concepts/metrics/context_entities_recall.html
 - **Type:** LLM-as-a-tool, Entity Recall
 

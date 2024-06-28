@@ -1,6 +1,6 @@
 # LangChain: Accuracy
 
-- **Dimension:** Generated Answer <-> Ground Truth Answer, Question
+- **Dimension:** Generated Answer <-> GroundTruth Answer, Question
 - **Reference:** [Evaluating RAG Architectures on Benchmark Tasks](https://langchain-ai.github.io/langchain-benchmarks/notebooks/retrieval/comparing_techniques.html)
 - **Type:** LLM-as-a-judge
 

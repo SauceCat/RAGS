@@ -1,6 +1,6 @@
 # MultiHop-RAG: Retrieval Evaluation
 
-- **Dimension:** Retrieved Context <-> Ground Truth Context
+- **Dimension:** Retrieved Context <-> GroundTruth Context
 - **Reference:** https://www.evidentlyai.com/ranking-metrics/evaluating-recommender-systems
 - **Type:** IR Metrics
 

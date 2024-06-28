@@ -1,6 +1,6 @@
 # BERTScore
 
-- **Dimension:** Generated Answer <-> Ground Truth Answer
+- **Dimension:** Generated Answer <-> GroundTruth Answer
 - **Reference:** https://huggingface.co/spaces/evaluate-metric/bertscore
 - **Type:** Semantic Similarity, Token-wise Accuracy
 

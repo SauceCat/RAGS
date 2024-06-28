@@ -1,6 +1,6 @@
 # CRUD: RAGQuestEval
 
-- **Dimension:** Generated Answer <-> Ground Truth Context
+- **Dimension:** Generated Answer <-> GroundTruth Context
 - **Reference:** [CRUD-RAG: A Comprehensive Chinese Benchmark for Retrieval-Augmented Generation of Large Language Models](https://arxiv.org/abs/2401.17043)
 - **Type:** Token-wise Accuracy
 

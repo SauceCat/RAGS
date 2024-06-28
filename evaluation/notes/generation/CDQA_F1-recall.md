@@ -1,6 +1,6 @@
 # CDQA: F1-recall
 
-- **Dimension:** Generated Answer <-> Ground Truth Answer
+- **Dimension:** Generated Answer <-> GroundTruth Answer
 - **Reference:** [Let LLMs Take on the Latest Challenges! A Chinese Dynamic Question Answering Benchmark](https://arxiv.org/abs/2402.19248)
 - **Type:** Token-wise Accuracy
 

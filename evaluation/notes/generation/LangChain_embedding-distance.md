@@ -1,6 +1,6 @@
 # LangChain: EmbeddingDistance
 
-- **Dimension:** Generated Answer <-> Ground Truth Answer
+- **Dimension:** Generated Answer <-> GroundTruth Answer
 - **Reference:** [Evaluating RAG Architectures on Benchmark Tasks](https://langchain-ai.github.io/langchain-benchmarks/notebooks/retrieval/comparing_techniques.html)
 - **Type:** Semantic Similarity
 
